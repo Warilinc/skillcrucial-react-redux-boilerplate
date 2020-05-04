@@ -65,7 +65,7 @@ server.patch('/api/v1/users/:userId', async (req, res) => {
   const user = req.body
   let users = await getUsers()
   users = users.reduce((acc, rec) => {
-    if (String(rec.id) === userId) return [...acc, { ...user, id: userId }]
+    if (String(rec.id) === userId) return [...acc, { ...rec, ...user }]
     return [...acc, rec]
   }, [])
   await saveUsers(users)
