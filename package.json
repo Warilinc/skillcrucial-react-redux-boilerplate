@@ -25,7 +25,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "author": "",
+  "author": "Warilinc <nsotmp@gmail.com>",
   "license": "MIT",
   "jest": {
     "setupFiles": [
@@ -68,6 +68,7 @@
     "@babel/runtime": "^7.7.6",
     "@storybook/cli": "^5.2.8",
     "autoprefixer": "^9.7.3",
+    "axios": "^0.19.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
@@ -166,5 +167,6 @@
       "pre-commit": "cross-env npm run lint && npm test",
       "pre-push": "cross-env npm run lint && npm test"
     }
-  }
+  },
+  "repository": "git@github.com:Warilinc/skillcrucial-react-redux-boilerplate.git"
 }
