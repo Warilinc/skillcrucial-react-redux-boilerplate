@@ -46,31 +46,7 @@ const getUsers = () => {
       return axios('https://jsonplaceholder.typicode.com/users').then(({ data }) => saveUsers(data))
     })
 }
-const upt = (id) => {
-  return {
-    id,
-    name: 'Someone',
-    username: 'Something',
-    email: 'some@some.some',
-    address: {
-      street: 'some street',
-      suite: ' some Suite ',
-      city: 'some city',
-      zipcode: 'some-code',
-      geo: {
-        lat: 'some',
-        lng: 'some'
-      }
-    },
-    phone: 'some phone',
-    website: 'some.net',
-    company: {
-      name: 'some company',
-      catchPhrase: 'some phrase',
-      bs: 'some some some'
-    }
-  }
-}
+
 server.get('/api/v1/users/', async (req, res) => {
   const users = await getUsers()
   res.json(users)
@@ -86,9 +62,10 @@ server.post('/api/v1/users/', async (req, res) => {
 
 server.patch('/api/v1/users/:userId', async (req, res) => {
   const { userId } = req.params
+  const user = req.body
   let users = await getUsers()
   users = users.reduce((acc, rec) => {
-    if (String(rec.id) === userId) return [...acc, upt(userId)]
+    if (String(rec.id) === userId) return [...acc, { ...user, id: userId }]
     return [...acc, rec]
   }, [])
   await saveUsers(users)
